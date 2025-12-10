@@ -10,7 +10,8 @@
 			"require": "./dist/index.js",
 			"import": "./dist/index.mjs",
 			"types": "./dist/index.d.ts"
-		}
+		},
+		"./types/*": "./dist/types/*"
 	},
 	"scripts": {
 		"build": "npx tsup"
@@ -28,5 +29,9 @@
 	},
 	"peerDependencies": {
 		"express": "^5.2.1"
+	},
+	"dependencies": {
+		"@types/jsonwebtoken": "^9.0.10",
+		"jsonwebtoken": "^9.0.3"
 	}
 }
