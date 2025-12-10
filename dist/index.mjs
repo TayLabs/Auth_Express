@@ -1,5 +1,3 @@
-'use strict';
-
 // src/middleware/authenticate.middleware.ts
 var authenticate = (req, res, next) => {
   next();
@@ -12,5 +10,4 @@ var authorize = (...scopes) => (req, res, next) => {
 };
 var authorize_middleware_default = authorize;
 
-exports.authenticate = authenticate_middleware_default;
-exports.authorize = authorize_middleware_default;
+export { authenticate_middleware_default as authenticate, authorize_middleware_default as authorize };
