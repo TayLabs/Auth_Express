@@ -1,5 +1,5 @@
 {
-	"name": "@auth/express",
+	"name": "@taylab-auth/express",
 	"version": "1.0.0",
 	"description": "Express SDK for TayLabs/Auth service",
 	"main": "dist/index.js",
