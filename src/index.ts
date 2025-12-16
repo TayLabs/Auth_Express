@@ -23,10 +23,7 @@ export default class TayLabAuth {
 			return decodedToken;
 		} catch (err) {
 			if (err instanceof JsonWebTokenError) {
-				throw new AppError(
-					'Missing or Invalid Access Token',
-					HttpStatus.UNAUTHORIZED
-				);
+				throw new AppError('Invalid Access Token', HttpStatus.UNAUTHORIZED);
 			} else if (err instanceof TokenExpiredError) {
 				throw new AppError('Token expired', HttpStatus.UNAUTHORIZED);
 			} else {
@@ -52,10 +49,7 @@ export default class TayLabAuth {
 				req.headers.authorization?.split(' ')[1] || req.cookies['_access_t'];
 
 			if (!accessToken) {
-				throw new AppError(
-					'Missing or Invalid Access Token',
-					HttpStatus.UNAUTHORIZED
-				);
+				throw new AppError('Missing Access Token', HttpStatus.UNAUTHORIZED);
 			}
 
 			// Verify Access Token

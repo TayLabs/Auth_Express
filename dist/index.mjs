@@ -31,10 +31,7 @@ var TayLabAuth = class {
       try {
         const accessToken = req.headers.authorization?.split(" ")[1] || req.cookies["_access_t"];
         if (!accessToken) {
-          throw new AppError(
-            "Missing or Invalid Access Token",
-            HttpStatus_enum_default.UNAUTHORIZED
-          );
+          throw new AppError("Missing Access Token", HttpStatus_enum_default.UNAUTHORIZED);
         }
         const payload = this._verifyToken(accessToken);
         if (payload.pending === "2fa" && options?.acceptPending !== "2fa") {
@@ -76,10 +73,7 @@ var TayLabAuth = class {
       return decodedToken;
     } catch (err) {
       if (err instanceof JsonWebTokenError) {
-        throw new AppError(
-          "Missing or Invalid Access Token",
-          HttpStatus_enum_default.UNAUTHORIZED
-        );
+        throw new AppError("Invalid Access Token", HttpStatus_enum_default.UNAUTHORIZED);
       } else if (err instanceof TokenExpiredError) {
         throw new AppError("Token expired", HttpStatus_enum_default.UNAUTHORIZED);
       } else {
